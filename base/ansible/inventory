@@ -1,0 +1,22 @@
+---
+
+
+all:
+  hosts:
+  children:
+    oci:
+      hosts:
+        arm1:
+          ansible_host: 150.136.108.142
+          ansible_user: ubuntu
+          ansible_python_interpreter: '/usr/bin/python3'
+          ansible_ssh_private_key_file: '/home/jay/code/oci-jay/free-test2/key.pem'
+        int1:
+          ansible_host: 132.145.211.57
+          ansible_user: ubuntu
+          ansible_python_interpreter: '/usr/bin/python3'
+          ansible_ssh_private_key_file: '/home/jay/code/oci-jay/free-test2/key.pem'
+    ubuntu:
+      hosts:
+        arm1:
+        int1:

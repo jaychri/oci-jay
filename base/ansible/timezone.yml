@@ -1,0 +1,20 @@
+---
+- hosts: oci
+  become: true
+  become_user: root
+  become_method: sudo
+  gather_facts: yes
+  vars:
+  tasks:
+    - name: Set timezone to America/Chicago
+      timezone:
+          name: America/Chicago
+
+    - name: Get date for testing purpose
+      command: /bin/date
+      changed_when: False
+      register: date
+
+    - debug: var={{ item }}
+      with_items:
+        - date.stdout

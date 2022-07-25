@@ -1,0 +1,3 @@
+
+
+terraform output -raw  generated_private_key_pem  > key.pem

@@ -1,0 +1,86 @@
+
+
+resource "oci_core_instance" "ubuntu_instance" {
+  # Required
+  availability_domain  = data.oci_identity_availability_domains.ads.availability_domains[0].name
+  compartment_id       = oci_identity_compartment.compartment.id
+  display_name         = var.hostname
+  shape                = "VM.Standard.E2.1.Micro"
+  preserve_boot_volume = false
+
+  source_details {
+    boot_volume_size_in_gbs = "50"
+    source_id               = "ocid1.image.oc1.iad.aaaaaaaa6qhihpfyaxwd5mnxw6s6w5k46r2ui3o75smnbx7vn77tbtvzljva"
+    source_type             = "image"
+  }
+
+  create_vnic_details {
+    assign_public_ip          = true
+    subnet_id                 = oci_core_subnet.subnet.id
+    assign_private_dns_record = "true"
+  }
+
+  agent_config {
+    is_management_disabled = "false"
+    is_monitoring_disabled = "false"
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Vulnerability Scanning"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Oracle Java Management Service"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Oracle Autonomous Linux"
+    }
+    plugins_config {
+      desired_state = "ENABLED"
+      name          = "OS Management Service Agent"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Management Agent"
+    }
+    plugins_config {
+      desired_state = "ENABLED"
+      name          = "Custom Logs Monitoring"
+    }
+    plugins_config {
+      desired_state = "ENABLED"
+      name          = "Compute Instance Run Command"
+    }
+    plugins_config {
+      desired_state = "ENABLED"
+      name          = "Compute Instance Monitoring"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Block Volume Management"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
+      name          = "Bastion"
+    }
+  }
+
+}
+
+
+# module "vminst" {
+#   source = "../../shared/create-oraclecloud-vm-puppetmless"
+#   region = var.region
+#   region_ad = var.region_ad
+#   compartment_ocid = var.compartment_ocid
+#   project = var.project
+#   account = var.account
+#   hostname = var.hostname
+#   host_domain = var.host_domain
+#   # install Oracle Linux 7, using image in uk-london-1
+#   host_os_image = "ocid1.image.oc1.uk-london-1.aaaaaaaagwdcgcw4squjusjy4yoyzxlewn6omj75f2xur2qpo7dgwexnzyhq"
+#   public_key_path = var.public_key_path
+#   subnet_id = oci_core_subnet.subnet.id
+#   nsg_id = oci_core_network_security_group.nsg.id
+#   create_dns_entry = "yes"
+# }

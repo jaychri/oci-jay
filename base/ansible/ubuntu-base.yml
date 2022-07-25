@@ -1,0 +1,34 @@
+---
+- hosts: ubuntu
+  become: true
+  become_user: root
+  tasks:
+
+    - name: Add listed software
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - atop
+          - bmon
+          - htop
+          - iotop
+          - lnav
+          - multitail
+          - nicstat
+          - vnstat
+          # - lldpd
+          # - prometheus-node-exporter
+          # - snmp
+          # - snmpd
+
+    - name: Remove listed software
+      apt:
+        name: "{{ packages }}"
+        state: absent
+      vars:
+        packages:
+          - nano
+
+## may need to do a 'add-apt-repository universe' to support some commands on basic ubuntu server
