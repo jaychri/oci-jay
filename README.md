@@ -1,3 +1,12 @@
+# Directories
+
+| Name | Status | Description |
+| ----------- | ------ | -------------------------------------|
+| container   | done   | Terraform to build the OCI Container |
+| base        | wip    | base Terraform and Ansible code to build from |
+
+
+
 # General notes
 
 Start vscode from within WSL
