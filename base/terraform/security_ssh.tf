@@ -9,5 +9,5 @@ output "generated_private_key_pem" {
 }
 
 output "generated_private_key_pem_0" {
-  value = "terraform output -raw generated_private_key_pem > key.pem"
+  value = "terraform output -raw generated_private_key_pem > ../key.pem"
 }

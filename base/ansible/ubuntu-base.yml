@@ -22,6 +22,7 @@
           # - prometheus-node-exporter
           # - snmp
           # - snmpd
+          # - sysbench
 
     - name: Remove listed software
       apt:

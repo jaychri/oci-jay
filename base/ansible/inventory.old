@@ -1,0 +1,21 @@
+---
+all:
+  hosts:
+  children:
+    oci:
+      hosts:
+        arm1:
+          ansible_host: 129.213.164.62
+          ansible_user: ubuntu
+          ansible_python_interpreter: '/usr/bin/python3'
+          ansible_ssh_private_key_file: '/home/jay/code/oci-jay/base/key.pem'
+        int1:
+          ansible_host: 150.136.164.91
+          ansible_user: ubuntu
+          ansible_python_interpreter: '/usr/bin/python3'
+          ansible_ssh_private_key_file: '/home/jay/code/oci-jay/base/key.pem'
+    ubuntu:
+      hosts:
+        arm1:
+        int1:
+

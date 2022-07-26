@@ -7,10 +7,14 @@ provider "oci" {
 }
 
 terraform {
-    required_providers {
-        oci = {
-            source  = "oracle/oci"
-            # version = ">= 4.0.0"
-        }
+  required_providers {
+    oci = {
+      source = "oracle/oci"
+      # version = ">= 4.0.0"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.1.0"
+    }
+  }
 }

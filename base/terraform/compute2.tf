@@ -47,7 +47,7 @@
 # }
 
 # output "instance2" {
-#   value = "ssh -i key.pem ubuntu@${oci_core_instance.instance2.public_ip}  #instance2 ${var.instance2_hostname}"
+#   value = "ssh -i ../key.pem ubuntu@${oci_core_instance.instance2.public_ip}  #instance2 ${var.instance2_hostname}"
 # }
 
 

@@ -47,7 +47,7 @@ resource "oci_core_instance" "instance1" {
 }
 
 output "instance1" {
-  value = "ssh -i key.pem ubuntu@${oci_core_instance.instance1.public_ip}  #instance1 ${var.instance1_hostname}"
+  value = "ssh -i ../key.pem ubuntu@${oci_core_instance.instance1.public_ip}  #instance1 ${var.instance1_hostname}"
 }
 
 
