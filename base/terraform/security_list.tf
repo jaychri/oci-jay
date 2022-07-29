@@ -1,11 +1,12 @@
 variable "maven_cidr" {
-  default = "75.73.126.48/32"
+  default     = ""
+  description = "local address to allow access from"
 }
 
-resource "oci_core_security_list" "test_security_list" {
+resource "oci_core_security_list" "base_security_list" {
   compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_virtual_network.test_vcn.id
-  display_name   = "testSecurityList"
+  vcn_id         = oci_core_virtual_network.base_vcn.id
+  display_name   = "baseSecurityList"
 
   egress_security_rules {
     protocol    = "6"

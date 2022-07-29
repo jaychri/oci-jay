@@ -1,37 +1,37 @@
 /* Network */
 
-resource "oci_core_virtual_network" "test_vcn" {
+resource "oci_core_virtual_network" "base_vcn" {
   cidr_block     = "10.1.0.0/16"
   compartment_id = var.compartment_ocid
-  display_name   = "testVCN"
-  dns_label      = "testvcn"
+  display_name   = "baseVCN"
+  dns_label      = "basevcn"
 }
 
-resource "oci_core_subnet" "test_subnet" {
+resource "oci_core_subnet" "base_subnet" {
   cidr_block        = "10.1.20.0/24"
-  display_name      = "testSubnet"
-  dns_label         = "testsubnet"
-  security_list_ids = [oci_core_security_list.test_security_list.id]
+  display_name      = "baseSubnet"
+  dns_label         = "basesubnet"
+  security_list_ids = [oci_core_security_list.base_security_list.id]
   compartment_id    = var.compartment_ocid
-  vcn_id            = oci_core_virtual_network.test_vcn.id
-  route_table_id    = oci_core_route_table.test_route_table.id
-  dhcp_options_id   = oci_core_virtual_network.test_vcn.default_dhcp_options_id
+  vcn_id            = oci_core_virtual_network.base_vcn.id
+  route_table_id    = oci_core_route_table.base_route_table.id
+  dhcp_options_id   = oci_core_virtual_network.base_vcn.default_dhcp_options_id
 }
 
-resource "oci_core_internet_gateway" "test_internet_gateway" {
+resource "oci_core_internet_gateway" "base_internet_gateway" {
   compartment_id = var.compartment_ocid
-  display_name   = "testIG"
-  vcn_id         = oci_core_virtual_network.test_vcn.id
+  display_name   = "baseIG"
+  vcn_id         = oci_core_virtual_network.base_vcn.id
 }
 
-resource "oci_core_route_table" "test_route_table" {
+resource "oci_core_route_table" "base_route_table" {
   compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_virtual_network.test_vcn.id
-  display_name   = "testRouteTable"
+  vcn_id         = oci_core_virtual_network.base_vcn.id
+  display_name   = "baseRouteTable"
 
   route_rules {
     destination       = "0.0.0.0/0"
     destination_type  = "CIDR_BLOCK"
-    network_entity_id = oci_core_internet_gateway.test_internet_gateway.id
+    network_entity_id = oci_core_internet_gateway.base_internet_gateway.id
   }
 }

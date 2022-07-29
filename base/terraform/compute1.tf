@@ -30,7 +30,7 @@ resource "oci_core_instance" "instance1" {
   }
 
   create_vnic_details {
-    subnet_id        = oci_core_subnet.test_subnet.id
+    subnet_id        = oci_core_subnet.base_subnet.id
     display_name     = "${var.instance1_hostname}-nic"
     assign_public_ip = true
     hostname_label   = var.instance1_hostname

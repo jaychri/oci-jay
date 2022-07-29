@@ -1,5 +1,5 @@
 # See https://docs.oracle.com/iaas/images/
-# data "oci_core_images" "test_images_oracle" {
+# data "oci_core_images" "base_images_oracle" {
 #   compartment_id           = var.compartment_ocid
 #   operating_system         = "Oracle Linux"
 #   operating_system_version = "8"
@@ -8,7 +8,7 @@
 #   sort_order               = "DESC"
 # }
 
-# data "oci_core_images" "test_images_ubuntu" {
+# data "oci_core_images" "base_images_ubuntu" {
 #   compartment_id           = var.compartment_ocid
 #   operating_system         = "Canonical Ubuntu"
 #   operating_system_version = "22.04"
