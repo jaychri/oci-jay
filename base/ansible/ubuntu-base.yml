@@ -19,6 +19,7 @@
           - nicstat
           - vnstat
           - neofetch
+          - aptitude
           # - lldpd
           # - prometheus-node-exporter
           # - snmp
