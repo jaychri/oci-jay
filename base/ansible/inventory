@@ -1,6 +1,10 @@
 [oci]
-arm1 ansible_host=129.213.164.62 ansible_user=ubuntu
-int1 ansible_host=150.136.164.91 ansible_user=ubuntu
+arm1 ansible_host=150.136.154.71 ansible_user=ubuntu
+int1 ansible_host=150.136.248.10 ansible_user=ubuntu
+
+[ubuntu]
+arm1
+int1
 
 [all:vars]
  ansible_python_interpreter=/usr/bin/python3 

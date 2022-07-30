@@ -8,6 +8,7 @@ data "template_file" "inventory" {
     inv_0      = "${var.instance0_hostname} ansible_host=${oci_core_instance.instance0.public_ip} ansible_user='ubuntu'"
     inv_1      = "${var.instance1_hostname} ansible_host=${oci_core_instance.instance1.public_ip} ansible_user='ubuntu'"
     inv_global = " ansible_python_interpreter='/usr/bin/python3' \n ansible_ssh_private_key_file='/home/jay/code/oci-jay/base/key.pem'"
+    inv_ubuntu = "${var.instance0_hostname} \n ${var.instance1_hostname}"
   }
 }
 
