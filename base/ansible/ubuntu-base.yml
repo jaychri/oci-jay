@@ -18,6 +18,7 @@
           - multitail
           - nicstat
           - vnstat
+          - neofetch
           # - lldpd
           # - prometheus-node-exporter
           # - snmp
