@@ -1,6 +1,7 @@
 [oci]
-${inv_0}
-${inv_1}
+${inv_arm1}
+${inv_arm2}
+${inv_int1}
 
 [ubuntu]
 ${inv_ubuntu}

@@ -50,26 +50,37 @@ resource "oci_core_security_list" "base_security_list" {
   # -------  MAVEN  ----------------------------------------------
 
   ingress_security_rules {
-    description = "Maven SSH inbound"
-    tcp_options {
-      max = "22"
-      min = "22"
-    }
-    protocol = "6"
-    source   = var.maven_cidr
-  }
-
-  ingress_security_rules {
-    description = "Maven ICMP inbound"
-    protocol    = 1
+    description = "Maven WILDCARD"
+    protocol    = "all"
     source      = var.maven_cidr
   }
 
-  # ingress_security_rules {
-  #   description = "Maven WILDCARD"
-  #   protocol    = "All"
-  #   source      = var.maven_cidr
-  # }
+#  ingress_security_rules {
+#    description = "Maven SSH inbound"
+#    tcp_options {
+#      max = "22"
+#      min = "22"
+#    }
+#    protocol = "6"
+#    source   = var.maven_cidr
+#  }
+#
+#  ingress_security_rules {
+#    description = "Maven portainer inbound"
+#    tcp_options {
+#      max = "9001"
+#      min = "9001"
+#    }
+#    protocol = "6"
+#    source   = var.maven_cidr
+#  }
+#
+#
+#  ingress_security_rules {
+#    description = "Maven ICMP inbound"
+#    protocol    = 1
+#    source      = var.maven_cidr
+#  }
 
 
   #  defaults 
