@@ -2,6 +2,10 @@ variable "maven_cidr" {
   default     = ""
   description = "local address to allow access from"
 }
+variable "stl_cidr" {
+  default     = ""
+  description = "local address to allow access from"
+}
 
 resource "oci_core_security_list" "base_security_list" {
   compartment_id = var.compartment_ocid
@@ -47,6 +51,29 @@ resource "oci_core_security_list" "base_security_list" {
   #   source      = "0.0.0.0/0"
   # }  
 
+  # -------  STL   ----------------------------------------------
+
+  ingress_security_rules {
+    description = "STL 80"
+    protocol    = "6"
+    tcp_options {
+      max = "80"
+      min = "80"
+    }
+    source = var.stl_cidr
+  }
+  ingress_security_rules {
+    description = "STL 443"
+    protocol    = "6"
+    tcp_options {
+      max = "443"
+      min = "443"
+    }
+    source = var.stl_cidr
+  }
+
+  #  ingress_security_rules {
+  #    description = "Maven SSH inbound"
   # -------  MAVEN  ----------------------------------------------
 
   ingress_security_rules {
@@ -55,32 +82,32 @@ resource "oci_core_security_list" "base_security_list" {
     source      = var.maven_cidr
   }
 
-#  ingress_security_rules {
-#    description = "Maven SSH inbound"
-#    tcp_options {
-#      max = "22"
-#      min = "22"
-#    }
-#    protocol = "6"
-#    source   = var.maven_cidr
-#  }
-#
-#  ingress_security_rules {
-#    description = "Maven portainer inbound"
-#    tcp_options {
-#      max = "9001"
-#      min = "9001"
-#    }
-#    protocol = "6"
-#    source   = var.maven_cidr
-#  }
-#
-#
-#  ingress_security_rules {
-#    description = "Maven ICMP inbound"
-#    protocol    = 1
-#    source      = var.maven_cidr
-#  }
+  #  ingress_security_rules {
+  #    description = "Maven SSH inbound"
+  #    tcp_options {
+  #      max = "22"
+  #      min = "22"
+  #    }
+  #    protocol = "6"
+  #    source   = var.maven_cidr
+  #  }
+  #
+  #  ingress_security_rules {
+  #    description = "Maven portainer inbound"
+  #    tcp_options {
+  #      max = "9001"
+  #      min = "9001"
+  #    }
+  #    protocol = "6"
+  #    source   = var.maven_cidr
+  #  }
+  #
+  #
+  #  ingress_security_rules {
+  #    description = "Maven ICMP inbound"
+  #    protocol    = 1
+  #    source      = var.maven_cidr
+  #  }
 
 
   #  defaults 
