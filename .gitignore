@@ -36,4 +36,6 @@ terraform.rc
 # protect the credentials
 *.pem
 *.key
+*.pub
+
 env.sh
