@@ -20,6 +20,9 @@
           - vnstat
           - neofetch
           - aptitude
+          - tldr
+          - ipcalc
+          - subnetcalc
           # - lldpd
           # - prometheus-node-exporter
           # - snmp

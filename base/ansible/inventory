@@ -1,6 +1,6 @@
 [oci]
-arm1 ansible_host=150.136.5.146 ansible_user=ubuntu
-arm2 ansible_host=150.136.81.240 ansible_user=ubuntu
+arm1 ansible_host=158.101.96.146 ansible_user=ubuntu
+arm2 ansible_host=129.213.53.99 ansible_user=ubuntu
 int1 ansible_host=158.101.118.121 ansible_user=ubuntu
 
 [ubuntu]
